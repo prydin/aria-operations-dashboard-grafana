@@ -1,4 +1,53 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_ARIA_OPERATIONS",
+      "label": "Aria Operations",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "vmware-ariaoperations-datasource",
+      "pluginName": "Aria Operations"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "bargauge",
+      "name": "Bar gauge",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.3.6"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "vmware-ariaoperations-datasource",
+      "name": "Aria Operations",
+      "version": "1.1.2"
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -26,7 +75,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 8159,
   "graphTooltip": 0,
-  "id": 11,
+  "id": null,
   "links": [
     {
       "asDropdown": true,
@@ -72,7 +121,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -202,7 +251,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:Datacenter).all().metrics(cpu|demandmhz).count()",
           "refId": "Datacenters"
@@ -211,7 +260,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).all().metrics(cpu|demandmhz).count()",
@@ -221,7 +270,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(cpu|demandmhz).count()",
@@ -231,7 +280,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost = \"${esxi}\").metrics(cpu|demandmhz).count()",
@@ -271,7 +320,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "description": "",
       "fieldConfig": {
@@ -400,7 +449,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|corecount_provisioned)",
           "refId": "NumCores"
@@ -409,7 +458,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|vcpus_allocated_on_all_vms)",
@@ -419,7 +468,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|vcpus_to_cores_allocation_ratio)",
@@ -433,7 +482,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "description": "",
       "fieldConfig": {
@@ -533,7 +582,7 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 39
       },
       "id": 232,
       "interval": "$inter",
@@ -566,7 +615,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|host_usable)",
           "refId": "TotalRAM"
@@ -575,7 +624,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|memory_allocated_on_all_vms)",
@@ -585,7 +634,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|virtual_to_physical_memory_allocation_ratio)",
@@ -602,7 +651,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 71
       },
       "id": 193,
       "panels": [],
@@ -619,7 +668,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 72
       },
       "id": 61,
       "panels": [],
@@ -638,7 +687,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -700,7 +749,7 @@
         "h": 5,
         "w": 6,
         "x": 0,
-        "y": 17
+        "y": 73
       },
       "id": 23,
       "interval": "$inter",
@@ -727,7 +776,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|demandPct)",
           "refId": "A"
@@ -740,7 +789,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -803,7 +852,7 @@
         "h": 5,
         "w": 7,
         "x": 6,
-        "y": 17
+        "y": 73
       },
       "id": 26,
       "interval": "$inter",
@@ -827,7 +876,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|usage_average)",
           "refId": "A"
@@ -839,7 +888,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -879,7 +928,7 @@
         "h": 9,
         "w": 11,
         "x": 13,
-        "y": 17
+        "y": 73
       },
       "hideTimeOverride": false,
       "id": 123,
@@ -907,7 +956,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:Datastore).all().metrics(diskspace|total|workload)",
           "refId": "A"
@@ -920,7 +969,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -980,7 +1029,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 22
+        "y": 78
       },
       "id": 90,
       "interval": "$inter",
@@ -1004,7 +1053,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(net:physical|received_average, net:physical|transmitted_average)",
           "refId": "A"
@@ -1016,7 +1065,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1077,7 +1126,7 @@
         "h": 4,
         "w": 7,
         "x": 6,
-        "y": 22
+        "y": 78
       },
       "id": 91,
       "interval": "$inter",
@@ -1101,7 +1150,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(disk|write_average, disk|read_average)",
           "refId": "A"
@@ -1120,7 +1169,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 82
       },
       "id": 25,
       "panels": [],
@@ -1139,7 +1188,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1174,7 +1223,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 83
       },
       "hideTimeOverride": true,
       "id": 34,
@@ -1201,7 +1250,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:Datastore).all().metrics(diskspace|total|workload)",
           "refId": "A"
@@ -1221,7 +1270,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 131
       },
       "id": 20,
       "panels": [],
@@ -1240,7 +1289,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1302,7 +1351,7 @@
         "h": 7,
         "w": 6,
         "x": 0,
-        "y": 34
+        "y": 132
       },
       "id": 15,
       "interval": "$inter",
@@ -1330,7 +1379,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(cpu|demandPct)",
           "refId": "A"
@@ -1342,7 +1391,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1404,7 +1453,7 @@
         "h": 7,
         "w": 6,
         "x": 6,
-        "y": 34
+        "y": 132
       },
       "id": 16,
       "interval": "$inter",
@@ -1432,7 +1481,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(mem|host_usagePct)",
           "refId": "A"
@@ -1444,7 +1493,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1504,7 +1553,7 @@
         "h": 7,
         "w": 6,
         "x": 12,
-        "y": 34
+        "y": 132
       },
       "id": 17,
       "interval": "$inter",
@@ -1532,7 +1581,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(net|usage_capacity)",
           "refId": "A"
@@ -1544,7 +1593,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1606,7 +1655,7 @@
         "h": 7,
         "w": 6,
         "x": 18,
-        "y": 34
+        "y": 132
       },
       "id": 19,
       "interval": "$inter",
@@ -1630,7 +1679,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(`VMWARE:VMwareAdapter Instance`).all().metrics(cpu|capacity_usagepct_average, mem|host_usagePct)",
           "refId": "A"
@@ -1649,7 +1698,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 139
       },
       "id": 21,
       "panels": [],
@@ -1668,7 +1717,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1734,7 +1783,7 @@
         "h": 7,
         "w": 6,
         "x": 0,
-        "y": 42
+        "y": 140
       },
       "id": 14,
       "interval": "$inter",
@@ -1758,7 +1807,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(cpu|demandPct)",
           "refId": "A"
@@ -1770,7 +1819,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1833,7 +1882,7 @@
         "h": 7,
         "w": 6,
         "x": 6,
-        "y": 42
+        "y": 140
       },
       "id": 13,
       "interval": "$inter",
@@ -1857,7 +1906,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(mem|consumedPct)",
           "refId": "A"
@@ -1869,7 +1918,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1929,7 +1978,7 @@
         "h": 7,
         "w": 6,
         "x": 12,
-        "y": 42
+        "y": 140
       },
       "hideTimeOverride": false,
       "id": 10,
@@ -1954,7 +2003,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(cpu|demandmhz)",
           "refId": "A"
@@ -1966,7 +2015,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2027,7 +2076,7 @@
         "h": 7,
         "w": 6,
         "x": 18,
-        "y": 42
+        "y": 140
       },
       "id": 12,
       "interval": "$inter",
@@ -2051,7 +2100,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(net|usage_average)",
           "refId": "A"
@@ -2063,7 +2112,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2123,7 +2172,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 49
+        "y": 147
       },
       "id": 3,
       "interval": "$inter",
@@ -2147,7 +2196,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(virtualDisk|numberWriteAveraged_average)",
           "refId": "A"
@@ -2159,7 +2208,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2219,7 +2268,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 49
+        "y": 147
       },
       "id": 18,
       "interval": "$inter",
@@ -2243,7 +2292,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(virtualDisk|numberReadAveraged_average)",
           "refId": "A"
@@ -2255,7 +2304,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIAOPS_ID}"
+        "uid": "${DS_ARIA_OPERATIONS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2315,7 +2364,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 49
+        "y": 147
       },
       "id": 9,
       "interval": "$inter",
@@ -2339,7 +2388,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIAOPS_ID}"
+            "uid": "${DS_ARIA_OPERATIONS}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(virtualDisk|totalLatency)",
           "refId": "A"
@@ -2357,9 +2406,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "5m: 5m\n30m: 30m\n1h:1h\n6h:6h\n12h:12h\n24h:24h\n7d:7d\n30d:30d",
-          "value": "5m: 5m\n30m: 30m\n1h:1h\n6h:6h\n12h:12h\n24h:24h\n7d:7d\n30d:30d"
+          "selected": true,
+          "text": "1h",
+          "value": "1h"
         },
         "hide": 0,
         "includeAll": false,
@@ -2368,7 +2417,7 @@
         "name": "inter",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "5m",
             "value": "5m"
           },
@@ -2378,7 +2427,7 @@
             "value": "30m"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1h",
             "value": "1h"
           },
@@ -2414,14 +2463,10 @@
         "type": "custom"
       },
       {
-        "current": {
-          "selected": false,
-          "text": "VCF Management Domain",
-          "value": "VCF Management Domain"
-        },
+        "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIAOPS_ID}"
+          "uid": "${DS_ARIA_OPERATIONS}"
         },
         "definition": "resource(`VMWARE:VMwareAdapter Instance`).all().metrics(cpu|demandmhz)",
         "hide": 0,
@@ -2439,14 +2484,10 @@
         "type": "query"
       },
       {
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
+        "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIAOPS_ID}"
+          "uid": "${DS_ARIA_OPERATIONS}"
         },
         "definition": "resource(VMWARE:ClusterComputeResource).whereProperties(summary|parentVcenter = \"${vcenter}\")",
         "hide": 0,
@@ -2468,14 +2509,10 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": false,
-          "text": "vcfesxi-2.cmbu.local",
-          "value": "vcfesxi-2.cmbu.local"
-        },
+        "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIAOPS_ID}"
+          "uid": "${DS_ARIA_OPERATIONS}"
         },
         "definition": "resource(VMWARE:HostSystem).whereProperties(summary|parentCluster = \"${clustername}\" and summary|parentVcenter = \"${vcenter}\")",
         "hide": 0,
@@ -2497,14 +2534,10 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
+        "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIAOPS_ID}"
+          "uid": "${DS_ARIA_OPERATIONS}"
         },
         "definition": "resource(VMWARE:Datastore).whereProperties(summary|parentVcenter = \"${vcenter}\")",
         "hide": 0,
@@ -2527,14 +2560,10 @@
       },
       {
         "allValue": "",
-        "current": {
-          "selected": false,
-          "text": "sc2vc05-nsx-mgmt-3",
-          "value": "sc2vc05-nsx-mgmt-3"
-        },
+        "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIAOPS_ID}"
+          "uid": "${DS_ARIA_OPERATIONS}"
         },
         "definition": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost = \"${esxi}\" and summary|parentCluster = \"${clustername}\" and summary|parentVcenter = \"${vcenter}\")",
         "hide": 0,
@@ -2589,13 +2618,5 @@
   "title": "VMware vSphere - Aria Ops 2",
   "uid": "0krmW_ySz22",
   "version": 6,
-  "weekStart": "",
-  "__inputs": {
-    "name": "DS_ARIAOPS_ID",
-    "label": "Aria Ops Source",
-    "description": "",
-    "type": "datasource",
-    "pluginId": "vmware-ariaoperations-datasource",
-    "pluginName": "VMWare Aria Operations"
-  }
+  "weekStart": ""
 }
