@@ -1,5 +1,4 @@
 import json
-from typing import Iterable
 
 version = "1.0.0"
 
@@ -19,7 +18,7 @@ def recurse_replace(node):
             recurse_replace(child)
 
 
-with open('aria-ops-dashboard.json', 'r') as f:
+with open('src/aria-ops-dashboard.json', 'r') as f:
     dashboard = json.load(f)
 dashboard["__inputs"] = {
     "name": "DS_ARIAOPS_ID",
