@@ -3,6 +3,10 @@
 ## Abstract
 This is clone of Jorge de la Cruz' vSphere dashboard, but with an Aria Operations datasource instead of InfluxDB.
 
+## Prerequisites
+* Grafana 9.x or later.
+* Aria operations plugin 1.2.0 or later.
+
 ## Installation
 Simply import the `aria-ops-dashboard-<version>.json` file from the Grafana dashboard creation file.
 
