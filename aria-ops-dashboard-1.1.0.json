@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_ARIA_OPERATIONS",
-      "label": "Aria Operations",
+      "name": "DS_ARIA_OPERATIONS WEEKLY",
+      "label": "Aria Operations Weekly",
       "description": "",
       "type": "datasource",
       "pluginId": "vmware-ariaoperations-datasource",
@@ -27,7 +27,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.6"
+      "version": "9.2.5"
     },
     {
       "type": "panel",
@@ -45,7 +45,7 @@
       "type": "datasource",
       "id": "vmware-ariaoperations-datasource",
       "name": "Aria Operations",
-      "version": "1.1.2"
+      "version": "1.2.0"
     }
   ],
   "annotations": {
@@ -121,7 +121,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -245,32 +245,32 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.2.5",
       "targets": [
         {
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
-          "queryText": "resource(VMWARE:Datacenter).all().metrics(cpu|demandmhz).count()",
+          "queryText": "resource(VMWARE:Datacenter).whereProperties(summary|parentVcenter in (\"${vcenter}\")).metrics(cpu|demandmhz).count()",
           "refId": "Datacenters"
         },
         {
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "hide": false,
-          "queryText": "resource(VMWARE:ClusterComputeResource).all().metrics(cpu|demandmhz).count()",
+          "queryText": "resource(VMWARE:ClusterComputeResource).whereProperties(summary|parentVcenter in (\"${vcenter}\")).metrics(cpu|demandmhz).count()",
           "refId": "Clusters"
         },
         {
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(cpu|demandmhz).count()",
@@ -280,10 +280,10 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "hide": false,
-          "queryText": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost = \"${esxi}\").metrics(cpu|demandmhz).count()",
+          "queryText": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost in (\"${esxi}\")).metrics(cpu|demandmhz).count()",
           "refId": "VMs"
         }
       ],
@@ -320,7 +320,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "description": "",
       "fieldConfig": {
@@ -414,7 +414,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 24,
+        "w": 12,
         "x": 0,
         "y": 7
       },
@@ -442,14 +442,14 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.2.5",
       "repeat": "clustername",
       "targets": [
         {
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|corecount_provisioned)",
           "refId": "NumCores"
@@ -458,7 +458,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|vcpus_allocated_on_all_vms)",
@@ -468,7 +468,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|vcpus_to_cores_allocation_ratio)",
@@ -482,7 +482,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "description": "",
       "fieldConfig": {
@@ -580,9 +580,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 24,
+        "w": 12,
         "x": 0,
-        "y": 31
+        "y": 11
       },
       "id": 232,
       "interval": "$inter",
@@ -608,14 +608,14 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.2.5",
       "repeat": "clustername",
       "targets": [
         {
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|host_usable)",
           "refId": "TotalRAM"
@@ -624,7 +624,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|memory_allocated_on_all_vms)",
@@ -634,7 +634,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "hide": false,
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|virtual_to_physical_memory_allocation_ratio)",
@@ -655,7 +655,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 15
       },
       "id": 61,
       "panels": [],
@@ -674,7 +674,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -736,7 +736,7 @@
         "h": 5,
         "w": 6,
         "x": 0,
-        "y": 56
+        "y": 16
       },
       "id": 23,
       "interval": "$inter",
@@ -763,7 +763,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(cpu|demandPct)",
           "refId": "A"
@@ -776,7 +776,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -839,7 +839,7 @@
         "h": 5,
         "w": 7,
         "x": 6,
-        "y": 56
+        "y": 16
       },
       "id": 26,
       "interval": "$inter",
@@ -863,7 +863,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(mem|usage_average)",
           "refId": "A"
@@ -875,7 +875,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -915,7 +915,7 @@
         "h": 9,
         "w": 11,
         "x": 13,
-        "y": 56
+        "y": 16
       },
       "hideTimeOverride": false,
       "id": 123,
@@ -937,13 +937,13 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.2.5",
       "targets": [
         {
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:Datastore).all().metrics(diskspace|total|workload)",
           "refId": "A"
@@ -956,7 +956,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1016,7 +1016,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 61
+        "y": 21
       },
       "id": 90,
       "interval": "$inter",
@@ -1040,7 +1040,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(net:physical|received_average, net:physical|transmitted_average)",
           "refId": "A"
@@ -1052,7 +1052,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1113,7 +1113,7 @@
         "h": 4,
         "w": 7,
         "x": 6,
-        "y": 61
+        "y": 21
       },
       "id": 91,
       "interval": "$inter",
@@ -1137,7 +1137,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:ClusterComputeResource).name(\"${clustername}\").metrics(disk|write_average, disk|read_average)",
           "refId": "A"
@@ -1156,7 +1156,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 25
       },
       "id": 25,
       "panels": [],
@@ -1175,7 +1175,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1210,7 +1210,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 26
       },
       "hideTimeOverride": true,
       "id": 34,
@@ -1229,7 +1229,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.2.5",
       "repeat": "datastore",
       "repeatDirection": "h",
       "targets": [
@@ -1237,7 +1237,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:Datastore).all().metrics(diskspace|total|workload)",
           "refId": "A"
@@ -1257,7 +1257,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 102
+        "y": 32
       },
       "id": 20,
       "panels": [],
@@ -1276,7 +1276,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1338,7 +1338,7 @@
         "h": 7,
         "w": 6,
         "x": 0,
-        "y": 103
+        "y": 33
       },
       "id": 15,
       "interval": "$inter",
@@ -1366,7 +1366,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(cpu|demandPct)",
           "refId": "A"
@@ -1378,7 +1378,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1440,7 +1440,7 @@
         "h": 7,
         "w": 6,
         "x": 6,
-        "y": 103
+        "y": 33
       },
       "id": 16,
       "interval": "$inter",
@@ -1468,7 +1468,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(mem|host_usagePct)",
           "refId": "A"
@@ -1480,7 +1480,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1540,7 +1540,7 @@
         "h": 7,
         "w": 6,
         "x": 12,
-        "y": 103
+        "y": 33
       },
       "id": 17,
       "interval": "$inter",
@@ -1568,7 +1568,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:HostSystem).name(\"${esxi}\").metrics(net|usage_capacity)",
           "refId": "A"
@@ -1580,7 +1580,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1642,7 +1642,7 @@
         "h": 7,
         "w": 6,
         "x": 18,
-        "y": 103
+        "y": 33
       },
       "id": 19,
       "interval": "$inter",
@@ -1666,7 +1666,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(`VMWARE:VMwareAdapter Instance`).all().metrics(cpu|capacity_usagepct_average, mem|host_usagePct)",
           "refId": "A"
@@ -1685,7 +1685,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 110
+        "y": 40
       },
       "id": 21,
       "panels": [],
@@ -1704,7 +1704,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1770,7 +1770,7 @@
         "h": 7,
         "w": 6,
         "x": 0,
-        "y": 111
+        "y": 41
       },
       "id": 14,
       "interval": "$inter",
@@ -1794,7 +1794,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(cpu|demandPct)",
           "refId": "A"
@@ -1806,7 +1806,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1869,7 +1869,7 @@
         "h": 7,
         "w": 6,
         "x": 6,
-        "y": 111
+        "y": 41
       },
       "id": 13,
       "interval": "$inter",
@@ -1893,7 +1893,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(mem|consumedPct)",
           "refId": "A"
@@ -1905,7 +1905,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1965,7 +1965,7 @@
         "h": 7,
         "w": 6,
         "x": 12,
-        "y": 111
+        "y": 41
       },
       "hideTimeOverride": false,
       "id": 10,
@@ -1990,7 +1990,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(cpu|demandmhz)",
           "refId": "A"
@@ -2002,7 +2002,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2063,7 +2063,7 @@
         "h": 7,
         "w": 6,
         "x": 18,
-        "y": 111
+        "y": 41
       },
       "id": 12,
       "interval": "$inter",
@@ -2087,7 +2087,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(net|usage_average)",
           "refId": "A"
@@ -2099,7 +2099,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2159,7 +2159,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 118
+        "y": 48
       },
       "id": 3,
       "interval": "$inter",
@@ -2183,7 +2183,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(virtualDisk|numberWriteAveraged_average)",
           "refId": "A"
@@ -2195,7 +2195,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2255,7 +2255,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 118
+        "y": 48
       },
       "id": 18,
       "interval": "$inter",
@@ -2279,7 +2279,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(virtualDisk|numberReadAveraged_average)",
           "refId": "A"
@@ -2291,7 +2291,7 @@
     {
       "datasource": {
         "type": "vmware-ariaoperations-datasource",
-        "uid": "${DS_ARIA_OPERATIONS}"
+        "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2351,7 +2351,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 118
+        "y": 48
       },
       "id": 9,
       "interval": "$inter",
@@ -2375,7 +2375,7 @@
           "advancedMode": true,
           "datasource": {
             "type": "vmware-ariaoperations-datasource",
-            "uid": "${DS_ARIA_OPERATIONS}"
+            "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
           },
           "queryText": "resource(VMWARE:VirtualMachine).name(\"${virtualmachine}\").metrics(virtualDisk|totalLatency)",
           "refId": "A"
@@ -2453,16 +2453,16 @@
         "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIA_OPERATIONS}"
+          "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
         },
-        "definition": "resource(`VMWARE:VMwareAdapter Instance`).all().metrics(cpu|demandmhz)",
+        "definition": "resource(`VMWARE:VMwareAdapter Instance`).all()",
         "hide": 0,
         "includeAll": true,
-        "multi": false,
+        "multi": true,
         "name": "vcenter",
         "options": [],
         "query": {
-          "query": "resource(`VMWARE:VMwareAdapter Instance`).all().metrics(cpu|demandmhz)"
+          "query": "resource(`VMWARE:VMwareAdapter Instance`).all()"
         },
         "refresh": 1,
         "regex": "",
@@ -2474,17 +2474,17 @@
         "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIA_OPERATIONS}"
+          "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
         },
-        "definition": "resource(VMWARE:ClusterComputeResource).whereProperties(summary|parentVcenter = \"${vcenter}\")",
+        "definition": "resource(VMWARE:ClusterComputeResource).whereProperties(summary|parentVcenter in (\"${vcenter}\"))",
         "hide": 0,
         "includeAll": true,
         "label": "Cluster",
-        "multi": false,
+        "multi": true,
         "name": "clustername",
         "options": [],
         "query": {
-          "query": "resource(VMWARE:ClusterComputeResource).whereProperties(summary|parentVcenter = \"${vcenter}\")"
+          "query": "resource(VMWARE:ClusterComputeResource).whereProperties(summary|parentVcenter in (\"${vcenter}\"))"
         },
         "refresh": 2,
         "regex": "",
@@ -2499,17 +2499,17 @@
         "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIA_OPERATIONS}"
+          "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
         },
-        "definition": "resource(VMWARE:HostSystem).whereProperties(summary|parentCluster = \"${clustername}\" and summary|parentVcenter = \"${vcenter}\")",
+        "definition": "resource(VMWARE:HostSystem).whereProperties(summary|parentCluster in (\"${clustername}\") and summary|parentVcenter in (\"${vcenter}\"))",
         "hide": 0,
         "includeAll": true,
         "label": "ESXi Server",
-        "multi": false,
+        "multi": true,
         "name": "esxi",
         "options": [],
         "query": {
-          "query": "resource(VMWARE:HostSystem).whereProperties(summary|parentCluster = \"${clustername}\" and summary|parentVcenter = \"${vcenter}\")"
+          "query": "resource(VMWARE:HostSystem).whereProperties(summary|parentCluster in (\"${clustername}\") and summary|parentVcenter in (\"${vcenter}\"))"
         },
         "refresh": 2,
         "regex": "",
@@ -2524,17 +2524,17 @@
         "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIA_OPERATIONS}"
+          "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
         },
-        "definition": "resource(VMWARE:Datastore).whereProperties(summary|parentVcenter = \"${vcenter}\")",
+        "definition": "resource(VMWARE:Datastore).whereProperties(summary|parentVcenter in (\"${vcenter}\"))",
         "hide": 0,
         "includeAll": true,
         "label": "Datastore",
-        "multi": false,
+        "multi": true,
         "name": "datastore",
         "options": [],
         "query": {
-          "query": "resource(VMWARE:Datastore).whereProperties(summary|parentVcenter = \"${vcenter}\")"
+          "query": "resource(VMWARE:Datastore).whereProperties(summary|parentVcenter in (\"${vcenter}\"))"
         },
         "refresh": 2,
         "regex": "/^(?!VeeamBackup_)/",
@@ -2550,17 +2550,17 @@
         "current": {},
         "datasource": {
           "type": "vmware-ariaoperations-datasource",
-          "uid": "${DS_ARIA_OPERATIONS}"
+          "uid": "${DS_ARIA_OPERATIONS WEEKLY}"
         },
-        "definition": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost = \"${esxi}\" and summary|parentCluster = \"${clustername}\" and summary|parentVcenter = \"${vcenter}\")",
+        "definition": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost in (\"${esxi}\") and summary|parentCluster in (\"${clustername}\") and summary|parentVcenter in (\"${vcenter}\"))",
         "hide": 0,
         "includeAll": true,
         "label": "VM",
-        "multi": false,
+        "multi": true,
         "name": "virtualmachine",
         "options": [],
         "query": {
-          "query": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost = \"${esxi}\" and summary|parentCluster = \"${clustername}\" and summary|parentVcenter = \"${vcenter}\")"
+          "query": "resource(VMWARE:VirtualMachine).whereProperties(summary|parentHost in (\"${esxi}\") and summary|parentCluster in (\"${clustername}\") and summary|parentVcenter in (\"${vcenter}\"))"
         },
         "refresh": 2,
         "regex": "",
@@ -2604,6 +2604,6 @@
   "timezone": "browser",
   "title": "VMware vSphere - Aria Ops",
   "uid": "0krmW_ySz23",
-  "version": 3,
+  "version": 12,
   "weekStart": ""
 }
