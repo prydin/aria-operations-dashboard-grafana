@@ -5,7 +5,8 @@ This is clone of Jorge de la Cruz' vSphere dashboard, but with an Aria Operation
 
 ## Prerequisites
 * Grafana 9.x or later.
-* Aria operations plugin 1.2.0 or later.
+* Dashboard version 1.0.0: Aria operations plugin 1.2.0 or later.
+* Dashboard version 1.1.0: Aria operations plugin 1.2.1 or later.
 
 ## Installation
 Simply import the `aria-ops-dashboard-<version>.json` file from the Grafana dashboard creation file.
